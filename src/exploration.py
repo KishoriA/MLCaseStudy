@@ -69,6 +69,9 @@ class DataLoader:
             if col_data.dtype==object:
                 col_data=pd.get_dummies(col_data,prefix=col)
             output = output.join(col_data)
+        output.to_csv('./data/encoded_data.csv')
+        print('save encoded data')
+        print(output.columns)
         
         return output,y_feat
 
