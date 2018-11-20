@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
 from sklearn.model_selection import train_test_split
+from sklearn.externals import joblib
 from sklearn.metrics import f1_score,classification_report,confusion_matrix
 import numpy as np
 import time
@@ -71,6 +72,12 @@ class Model:
            return 'Positive'
         else:
             return 'Negative'
+
+    def save_model(self):
+        joblib.dump(self.model,'./models/model.joblib')
+    def load_model(self):
+        self.model=joblib.load('./models/model.joblib')
+
     
    
           
